@@ -81,11 +81,22 @@ export const SERVICE_PAGES = [
 ] as const;
 
 const OG_IMAGE = {
-  url: `${SITE_URL}/rcp.png`,
+  url: `${SITE_URL}/favicon-512x512.png`,
   width: 512,
   height: 512,
   alt: SITE_NAME,
 } as const;
+
+export const SITE_ICONS = {
+  icon: [
+    { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+    { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+    { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+  ],
+  apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  shortcut: "/favicon-48x48.png",
+};
 
 export function createMetadata({
   title = DEFAULT_TITLE,
@@ -147,6 +158,7 @@ export function createMetadata({
         "max-snippet": -1,
       },
     },
+    icons: SITE_ICONS,
     ...(googleVerification
       ? { verification: { google: googleVerification } }
       : {}),
@@ -159,4 +171,5 @@ export const ROOT_METADATA: Metadata = {
     default: DEFAULT_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
+  icons: SITE_ICONS,
 };

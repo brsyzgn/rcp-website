@@ -39,8 +39,8 @@ export function buildLocalBusinessSchema() {
     url: SITE_URL,
     telephone: COMPANY.phoneRaw,
     email: COMPANY.email,
-    image: `${SITE_URL}/rcp.png`,
-    logo: `${SITE_URL}/rcp.png`,
+    image: `${SITE_URL}/favicon-512x512.png`,
+    logo: `${SITE_URL}/favicon-512x512.png`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",

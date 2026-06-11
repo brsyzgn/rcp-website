@@ -19,6 +19,9 @@ export default function RootLayout({
   return (
     <html lang="tr" className={plusJakarta.variable}>
       <head>
+        <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
+        <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="preload" href="/rp-poster.jpg" as="image" />
         <link rel="preload" href="/rp.mp4" as="video" type="video/mp4" />
       </head>

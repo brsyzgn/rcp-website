@@ -87,7 +87,7 @@ export const SERVICES = [
       "Uydu, merkezi anten ve çanak kurulumlarında kesintisiz yayın kalitesi sağlıyoruz.",
     icon: "satellite" as const,
     image:
-      "https://images.unsplash.com/photo-1614624532983-4ce03382d63f?w=1920&q=85&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=85&auto=format&fit=crop",
     imageAlt: "Çatı üzerinde profesyonel uydu anten kurulumu",
   },
   {
