@@ -95,7 +95,7 @@ export const SITE_ICONS = {
     { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
   ],
   apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  shortcut: "/favicon-48x48.png",
+  shortcut: "/favicon.ico",
 };
 
 export function createMetadata({
