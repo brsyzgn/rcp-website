@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
+import { SocialLinks } from "@/components/ui/social-links";
 import { COMPANY, NAV_LINKS } from "@/lib/constants";
 import { scrollToSection } from "@/lib/scroll-to-section";
 import { cn } from "@/lib/utils";
@@ -51,19 +52,13 @@ export function Header() {
         isScrolled && "shadow-sm shadow-navy-900/5"
       )}
     >
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2 transition-opacity hover:opacity-90 sm:gap-3"
+          className="group flex shrink-0 items-center gap-2 transition-opacity hover:opacity-90 sm:gap-3"
           aria-label="Yaşam Elektronik ana sayfa"
         >
-          <Logo
-            variant="full"
-            theme="light"
-            width={178}
-            height={44}
-            className="transition-transform group-hover:scale-[1.02] sm:w-[210px] sm:h-[50px]"
-          />
+          <Logo className="h-11 w-auto transition-transform group-hover:scale-[1.02] sm:h-12 lg:h-[52px]" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Ana menü">
@@ -81,26 +76,33 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <SocialLinks variant="header" />
           <Button
             size="lg"
-            className="h-10 gap-2 bg-navy-900 text-white hover:bg-navy-800"
+            className="hidden h-10 gap-2 bg-navy-900 px-4 text-white hover:bg-navy-800 md:flex"
             render={<a href={`tel:${COMPANY.phoneRaw}`} />}
           >
             <Phone className="size-4" />
-            Hemen Ara
+            <span className="hidden xl:inline">Hemen Ara</span>
           </Button>
+          <a
+            href={`tel:${COMPANY.phoneRaw}`}
+            className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy-900 text-white transition-colors hover:bg-navy-800 md:hidden"
+            aria-label="Telefon ile ara"
+          >
+            <Phone className="size-4" />
+          </a>
+          <button
+            type="button"
+            className="rounded-lg p-2 text-navy-900 lg:hidden"
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            aria-label={isMobileOpen ? "Menüyü kapat" : "Menüyü aç"}
+            aria-expanded={isMobileOpen}
+          >
+            {isMobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="rounded-lg p-2 text-navy-900 lg:hidden"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          aria-label={isMobileOpen ? "Menüyü kapat" : "Menüyü aç"}
-          aria-expanded={isMobileOpen}
-        >
-          {isMobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
       </div>
 
       <AnimatePresence>
@@ -112,9 +114,6 @@ export function Header() {
             className="overflow-hidden border-t border-navy-100 bg-white lg:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobil menü">
-              <div className="mb-3 flex justify-center border-b border-navy-100 pb-4">
-                <Logo variant="full" theme="light" width={210} height={50} />
-              </div>
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}

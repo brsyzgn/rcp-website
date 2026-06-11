@@ -12,6 +12,40 @@ export const COMPANY = {
     "https://www.google.com/maps/search/?api=1&query=Ya%C5%9Fam+Elektronik+%C4%B0stasyon+Mahallesi+Vatan+Caddesi+No%3A129+Tuzla+%C4%B0stanbul",
 } as const;
 
+/** Gerçek hesap URL'lerinizi buraya yazın. Boş bırakılanlar sitede görünmez. */
+export const SOCIAL_LINKS = [
+  {
+    id: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/yasamelektroniktuzla",
+    icon: "instagram" as const,
+  },
+  {
+    id: "facebook",
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1JP167NwNo/",
+    icon: "facebook" as const,
+  },
+  {
+    id: "twitter",
+    label: "Twitter",
+    href: "https://x.com/yasamelektronik",
+    icon: "twitter" as const,
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/recep-karata%C5%9F-4b7ba7412",
+    icon: "linkedin" as const,
+  },
+  {
+    id: "tiktok",
+    label: "TikTok",
+    href: "",
+    icon: "tiktok" as const,
+  },
+] as const;
+
 export const NAV_LINKS = [
   { label: "Ana Sayfa", href: "#hero" },
   { label: "Hizmetler", href: "#hizmetler" },

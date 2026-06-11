@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="mb-6">
-              <Logo variant="full" theme="dark" width={190} height={46} />
+              <Logo className="h-11 w-auto sm:h-12" />
               <p className="mt-3 text-xs text-blue-300/70">{COMPANY.slogan}</p>
             </div>
             <p className="text-sm leading-relaxed text-blue-200/60">

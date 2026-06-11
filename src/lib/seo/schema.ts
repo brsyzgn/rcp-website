@@ -1,4 +1,10 @@
-import { COMPANY, SCHEMA_SERVICES, SERVICE_AREAS, TESTIMONIALS } from "@/lib/constants";
+import {
+  COMPANY,
+  SCHEMA_SERVICES,
+  SERVICE_AREAS,
+  SOCIAL_LINKS,
+  TESTIMONIALS,
+} from "@/lib/constants";
 import { FAQ_ITEMS } from "@/lib/seo/faq-data";
 import { DEFAULT_DESCRIPTION, SERVICE_PAGES, SITE_URL } from "@/lib/seo/config";
 
@@ -33,8 +39,8 @@ export function buildLocalBusinessSchema() {
     url: SITE_URL,
     telephone: COMPANY.phoneRaw,
     email: COMPANY.email,
-    image: `${SITE_URL}/icon.svg`,
-    logo: `${SITE_URL}/icon.svg`,
+    image: `${SITE_URL}/rcp.png`,
+    logo: `${SITE_URL}/rcp.png`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -88,7 +94,11 @@ export function buildLocalBusinessSchema() {
       bestRating: 5,
     },
     review: reviews,
-    sameAs: [COMPANY.whatsapp, COMPANY.mapsUrl],
+    sameAs: [
+      COMPANY.whatsapp,
+      COMPANY.mapsUrl,
+      ...SOCIAL_LINKS.map((link) => link.href).filter(Boolean),
+    ],
   };
 }
 

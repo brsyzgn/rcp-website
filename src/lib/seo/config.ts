@@ -81,7 +81,7 @@ export const SERVICE_PAGES = [
 ] as const;
 
 const OG_IMAGE = {
-  url: `${SITE_URL}/icon.svg`,
+  url: `${SITE_URL}/rcp.png`,
   width: 512,
   height: 512,
   alt: SITE_NAME,
