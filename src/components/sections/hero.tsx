@@ -31,6 +31,7 @@ export function Hero() {
             muted
             playsInline
             preload="auto"
+            poster="/rp-poster.jpg"
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source src="/rp.mp4" type="video/mp4" />
@@ -61,7 +62,8 @@ export function Hero() {
                 transition={{ duration: 0.6, delay: 0.08 }}
                 className="text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl lg:text-4xl xl:text-5xl"
               >
-                Yaşam Elektronik Tuzla
+                Yaşam Elektronik
+                <span className="sr-only"> Tuzla</span>
                 <span className="mt-2 block bg-gradient-to-r from-blue-300 to-cyan-200 bg-clip-text text-transparent">
                   Güvenlik ve Elektronik Sistemleri
                 </span>

@@ -18,6 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={plusJakarta.variable}>
+      <head>
+        <link rel="preload" href="/rp-poster.jpg" as="image" />
+        <link rel="preload" href="/rp.mp4" as="video" type="video/mp4" />
+      </head>
       <body className="min-h-screen bg-white font-sans antialiased">
         <a
           href="#main-content"
