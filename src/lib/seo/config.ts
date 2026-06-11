@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://yasamelektronik.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.yasamelektronik.com";
 
 export const SITE_NAME = "Yaşam Elektronik";
 
@@ -89,13 +89,19 @@ const OG_IMAGE = {
 
 export const SITE_ICONS = {
   icon: [
-    { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-    { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-    { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
-    { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+    { url: `${SITE_URL}/favicon.ico`, sizes: "48x48", type: "image/x-icon" },
+    { url: `${SITE_URL}/favicon-48x48.png`, sizes: "48x48", type: "image/png" },
+    { url: `${SITE_URL}/favicon-192x192.png`, sizes: "192x192", type: "image/png" },
+    { url: `${SITE_URL}/favicon-512x512.png`, sizes: "512x512", type: "image/png" },
   ],
-  apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  shortcut: "/favicon.ico",
+  apple: [
+    {
+      url: `${SITE_URL}/apple-touch-icon.png`,
+      sizes: "180x180",
+      type: "image/png",
+    },
+  ],
+  shortcut: `${SITE_URL}/favicon.ico`,
 };
 
 export function createMetadata({
