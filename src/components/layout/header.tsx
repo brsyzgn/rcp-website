@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,8 @@ export function Header() {
   const isHome = pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [lockBodyScroll, setLockBodyScroll] = useState(false);
+  const pendingScrollRef = useRef<string | null>(null);
 
   const getNavHref = (href: string) =>
     href.startsWith("#") ? `/${href}` : href;
@@ -28,21 +30,41 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileOpen ? "hidden" : "";
+    if (isMobileOpen) setLockBodyScroll(true);
+  }, [isMobileOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = lockBodyScroll ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isMobileOpen]);
+  }, [lockBodyScroll]);
+
+  const handleMenuExitComplete = useCallback(() => {
+    setLockBodyScroll(false);
+
+    const href = pendingScrollRef.current;
+    if (href) {
+      pendingScrollRef.current = null;
+      scrollToSection(href);
+    }
+  }, []);
 
   const handleAnchorNav = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       e.preventDefault();
-      setIsMobileOpen(false);
-      requestAnimationFrame(() => {
+
+      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+
+      if (isMobile && isMobileOpen) {
+        pendingScrollRef.current = href;
+        setIsMobileOpen(false);
+      } else {
+        setIsMobileOpen(false);
         scrollToSection(href);
-      });
+      }
     },
-    []
+    [isMobileOpen]
   );
 
   return (
@@ -105,12 +127,13 @@ export function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={handleMenuExitComplete}>
         {isMobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
             className="overflow-hidden border-t border-navy-100 bg-white lg:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobil menü">
