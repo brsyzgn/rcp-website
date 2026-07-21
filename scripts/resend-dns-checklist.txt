@@ -1,0 +1,14 @@
+# Resend DNS — yasamelektronik.com
+#
+# Resend Dashboard → Domains → Add Domain sonrası size özel değerler gelir.
+# Aşağıdakiler tipik kayıtlardır; Resend panelindeki GERÇEK değerleri kullanın.
+#
+# Kayıt tipi | İsim/Host              | Değer (örnek)
+# -----------|------------------------|------------------------------------------
+# TXT (SPF)  | @ veya gönderim host   | v=spf1 include:amazonses.com ~all
+#             |                        | (Resend’in gösterdiği SPF satırını kopyalayın)
+# CNAME/TXT  | resend._domainkey...   | Resend DKIM değeri
+# TXT        | _dmarc (opsiyonel)     | v=DMARC1; p=none;
+#
+# DNS paneli: domain’i aldığınız yer (Cloudflare, Natro, GoDaddy, Turhost, vb.)
+# Ekledikten sonra Resend’de Verify’e basın (5–60 dk sürebilir).

@@ -99,7 +99,10 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <SocialLinks variant="header" />
+          <SocialLinks
+            variant="header"
+            include={["instagram", "facebook", "twitter", "linkedin"]}
+          />
           <Button
             size="lg"
             className="hidden h-10 gap-2 bg-navy-900 px-4 text-white hover:bg-navy-800 md:flex"

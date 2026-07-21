@@ -1,12 +1,2 @@
-interface JsonLdScriptProps {
-  data: Record<string, unknown>;
-}
-
-export function JsonLdScript({ data }: JsonLdScriptProps) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
+/** @deprecated StructuredData kullanın */
+export { StructuredData as JsonLdScript } from "@/components/seo/structured-data";

@@ -32,53 +32,8 @@ export const SEO_KEYWORDS = [
   "merkezi anten Tuzla",
 ] as const;
 
-export const SERVICE_PAGES = [
-  {
-    slug: "kamera-sistemleri-tuzla",
-    title: "Kamera Sistemleri Tuzla",
-    metaTitle: "Kamera Sistemleri Tuzla | Yaşam Elektronik",
-    metaDescription:
-      "Tuzla ve İstanbul Anadolu Yakası'nda IP kamera, CCTV ve güvenlik kamera sistemi kurulumu. Yaşam Elektronik ile profesyonel keşif ve montaj.",
-    h1: "Tuzla Kamera Sistemleri Kurulumu",
-    keywords: ["Tuzla Kamera Sistemleri", "İstanbul Kamera Sistemleri", "CCTV Tuzla"],
-  },
-  {
-    slug: "alarm-sistemleri-tuzla",
-    title: "Alarm Sistemleri Tuzla",
-    metaTitle: "Alarm Sistemleri Tuzla | Yaşam Elektronik",
-    metaDescription:
-      "Ev ve iş yeri alarm sistemi kurulumu Tuzla. Kablosuz ve kablolu alarm çözümleri, 7/24 güvenlik. Yaşam Elektronik uzman ekibi.",
-    h1: "Tuzla Alarm Sistemleri",
-    keywords: ["Tuzla Alarm Sistemleri", "İstanbul Alarm Sistemleri", "Alarm Sistemleri Tuzla"],
-  },
-  {
-    slug: "diyafon-sistemleri-tuzla",
-    title: "Diyafon Sistemleri Tuzla",
-    metaTitle: "Görüntülü Diyafon Tuzla | Yaşam Elektronik",
-    metaDescription:
-      "Apartman ve site girişlerine görüntülü diyafon kurulumu Tuzla. Görüntülü kapı telefonu montaj ve bakım hizmeti.",
-    h1: "Görüntülü Diyafon Sistemleri Tuzla",
-    keywords: ["Görüntülü Diyafon Tuzla", "Tuzla Diyafon Sistemleri", "Diyafon kurulumu"],
-  },
-  {
-    slug: "uydu-sistemleri-tuzla",
-    title: "Uydu Sistemleri Tuzla",
-    metaTitle: "Uydu Anten Servisi Tuzla | Yaşam Elektronik",
-    metaDescription:
-      "Uydu ve merkezi anten kurulumu Tuzla. Çanak anten, merkezi sistem ve uydu yayın çözümleri. Yaşam Elektronik.",
-    h1: "Uydu ve Merkezi Anten Sistemleri Tuzla",
-    keywords: ["Uydu Anten Servisi Tuzla", "Tuzla Uydu Sistemleri", "Merkezi Anten Tuzla"],
-  },
-  {
-    slug: "tv-tamiri-tuzla",
-    title: "TV Tamiri Tuzla",
-    metaTitle: "LED LCD TV Tamiri Tuzla | Yaşam Elektronik",
-    metaDescription:
-      "LED ve LCD TV tamiri, LED değişimi Tuzla. Tüm marka televizyonlarda garantili teknik servis. Yaşam Elektronik.",
-    h1: "LED LCD TV Tamiri Tuzla",
-    keywords: ["LED LCD TV Tamiri Tuzla", "Tuzla TV Tamiri", "TV servisi İstanbul"],
-  },
-] as const;
+/** Hizmet sayfaları — tek kaynak: src/lib/services.ts */
+export { SERVICE_PAGES, services, SERVICE_LIST, getServiceBySlug } from "@/lib/services";
 
 const OG_IMAGE = {
   url: `${SITE_URL}/favicon-512x512.png`,

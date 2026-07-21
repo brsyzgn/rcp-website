@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { LegalProvider } from "@/components/legal/legal-provider";
+import { CookieBanner } from "@/components/legal/cookie-banner";
 import { ROOT_METADATA, SITE_URL } from "@/lib/seo/config";
 import "./globals.css";
 
@@ -26,14 +28,17 @@ export default function RootLayout({
         <link rel="preload" href="/rp-poster.jpg" as="image" />
         <link rel="preload" href="/rp.mp4" as="video" type="video/mp4" />
       </head>
-      <body className="min-h-screen bg-white font-sans antialiased">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-white"
-        >
-          İçeriğe atla
-        </a>
-        {children}
+      <body className="min-h-screen overflow-x-hidden bg-white font-sans antialiased">
+        <LegalProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-white/40"
+          >
+            İçeriğe atla
+          </a>
+          {children}
+          <CookieBanner />
+        </LegalProvider>
       </body>
     </html>
   );

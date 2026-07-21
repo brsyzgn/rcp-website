@@ -1,18 +1,38 @@
+/**
+ * Kurumsal kimlik — vergi / MERSİS / KEP alanlarını doldurun.
+ * Boş bırakılan yasal alanlar sitede gösterilmez.
+ */
 export const COMPANY = {
   name: "YAŞAM ELEKTRONİK",
+  legalName: "",
   slogan: "Güvenliğiniz Bizim İşimiz",
+
+  taxOffice: "",
+  taxNumber: "",
+  mersisNumber: "",
+  tradeRegistryNumber: "",
+  kepAddress: "",
+
   phone: "0507 378 19 15",
   phoneRaw: "+905073781915",
+  email: "info@yasamelektronik.com",
+  whatsappNumber: "905073781915",
   whatsapp: "https://wa.me/905073781915",
+
   address: "İstasyon Mahallesi, Vatan Caddesi No:129",
   city: "Tuzla / İstanbul",
   fullAddress: "İstasyon Mahallesi, Vatan Caddesi No:129, Tuzla / İstanbul",
-  email: "info@yasamelektronik.com",
+  googleMapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Ya%C5%9Fam+Elektronik+%C4%B0stasyon+Mahallesi+Vatan+Caddesi+No%3A129+Tuzla+%C4%B0stanbul",
+  /** Geriye uyumluluk — googleMapsUrl ile aynı */
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Ya%C5%9Fam+Elektronik+%C4%B0stasyon+Mahallesi+Vatan+Caddesi+No%3A129+Tuzla+%C4%B0stanbul",
 } as const;
 
-/** Gerçek hesap URL'lerinizi buraya yazın. Boş bırakılanlar sitede görünmez. */
+/**
+ * Sosyal medya linkleri — boş `href` olanlar sitede gizlenir.
+ * Google Business URL'sini Google İşletme Profili bağlantınızla değiştirin.
+ */
 export const SOCIAL_LINKS = [
   {
     id: "instagram",
@@ -25,6 +45,18 @@ export const SOCIAL_LINKS = [
     label: "Facebook",
     href: "https://www.facebook.com/share/1JP167NwNo/",
     icon: "facebook" as const,
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    href: "https://wa.me/905073781915",
+    icon: "whatsapp" as const,
+  },
+  {
+    id: "google",
+    label: "Google Business",
+    href: "https://www.google.com/maps/search/?api=1&query=Ya%C5%9Fam+Elektronik+Tuzla",
+    icon: "google" as const,
   },
   {
     id: "twitter",
@@ -44,6 +76,14 @@ export const SOCIAL_LINKS = [
     href: "",
     icon: "tiktok" as const,
   },
+] as const;
+
+/** Footer / iletişim için öne çıkan sosyal kanallar */
+export const PRIMARY_SOCIAL_IDS = [
+  "instagram",
+  "facebook",
+  "whatsapp",
+  "google",
 ] as const;
 
 export const NAV_LINKS = [
@@ -136,36 +176,39 @@ export const PROCESS_STEPS = [
     label: "İletişim",
     title: "İlk Görüşme",
     description:
-      "Telefon veya WhatsApp üzerinden ihtiyaçlarınızı dinliyoruz.",
+      "Telefon veya WhatsApp üzerinden ihtiyaçlarınızı dinliyor, doğru yönlendirmeyi yapıyoruz.",
     icon: "phone" as const,
   },
   {
     id: "kesif",
     label: "Keşif",
-    title: "Ücretsiz Keşif",
+    title: "Keşif",
     description:
-      "Alanınızı analiz ederek en uygun çözümü belirliyoruz.",
+      "Sahada ücretsiz keşif ile alanınızı analiz edip en uygun çözümü belirliyoruz.",
     icon: "search" as const,
   },
   {
     id: "teklif",
     label: "Teklif",
-    title: "Teklif ve Planlama",
-    description: "Size özel çözüm ve fiyatlandırma sunuyoruz.",
+    title: "Teklif",
+    description:
+      "Size özel çözüm önerisi, malzeme listesi ve şeffaf fiyatlandırma sunuyoruz.",
     icon: "fileText" as const,
   },
   {
     id: "kurulum",
     label: "Kurulum",
-    title: "Profesyonel Kurulum",
-    description: "Uzman ekibimiz sistemlerinizi eksiksiz kuruyor.",
+    title: "Kurulum",
+    description:
+      "Uzman ekibimiz sistemi planlanan sürede eksiksiz kurar ve test eder.",
     icon: "wrench" as const,
   },
   {
     id: "destek",
     label: "Destek",
-    title: "Teslimat ve Destek",
-    description: "Testleri tamamlıyor ve satış sonrası destek sağlıyoruz.",
+    title: "Destek",
+    description:
+      "Teslimat sonrası kullanım eğitimi ve satış sonrası teknik destek sağlarız.",
     icon: "shield" as const,
   },
 ] as const;
@@ -209,4 +252,4 @@ export const SCHEMA_SERVICES = [
 ] as const;
 
 export const MAPS_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3013.5!2d29.3!3d40.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ5JzEyLjAiTiAyOcKwMTgnMDAuMCJF!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str";
+  "https://www.google.com/maps?q=%C4%B0stasyon+Mahallesi+Vatan+Caddesi+No:129+Tuzla+%C4%B0stanbul&output=embed";

@@ -3,64 +3,84 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ServicePageLayout } from "@/components/seo/service-page-layout";
 import { ServiceJsonLd } from "@/components/seo/service-json-ld";
-import { createMetadata, SERVICE_PAGES } from "@/lib/seo/config";
-import { SERVICE_BODY } from "@/lib/seo/service-content";
+import {
+  ServiceBenefits,
+  ServiceScope,
+  ServiceProcess,
+  ServiceFAQ,
+  ServiceCTA,
+} from "@/components/service";
+import { createMetadata } from "@/lib/seo/config";
+import { SERVICE_LIST, getServiceBySlug } from "@/lib/services";
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return SERVICE_PAGES.map((page) => ({ slug: page.slug }));
+  return SERVICE_LIST.map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const page = SERVICE_PAGES.find((item) => item.slug === slug);
-  if (!page) return {};
+  const service = getServiceBySlug(slug);
+  if (!service) return {};
 
   return createMetadata({
-    title: page.title,
-    description: page.metaDescription,
-    path: `/${page.slug}`,
-    keywords: [...page.keywords, "Yaşam Elektronik", "Yaşam Elektronik Tuzla"],
+    title: service.title,
+    description: service.metaDescription,
+    path: `/${service.slug}`,
+    keywords: [...service.keywords, "Yaşam Elektronik", "Yaşam Elektronik Tuzla"],
   });
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
-  const page = SERVICE_PAGES.find((item) => item.slug === slug);
-  const content = SERVICE_BODY[slug];
+  const service = getServiceBySlug(slug);
 
-  if (!page || !content) notFound();
+  if (!service) notFound();
 
-  const relatedPages = SERVICE_PAGES.filter((item) => item.slug !== slug);
+  const relatedServices = SERVICE_LIST.filter((item) => item.slug !== slug);
 
   return (
     <>
-      <ServiceJsonLd slug={slug} />
+      <ServiceJsonLd slug={slug} faq={service.faq} />
       <ServicePageLayout
         slug={slug}
-        h1={page.h1}
-        title={page.title}
-        description={content.intro}
+        h1={service.h1}
+        title={service.title}
+        description={service.description}
       >
-        {content.paragraphs.map((paragraph) => (
-          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-        ))}
+        <ServiceBenefits items={[...service.benefits]} />
+        <ServiceScope
+          items={[...service.scope]}
+          paragraphs={[...service.paragraphs]}
+        />
+        <ServiceProcess />
+        <ServiceFAQ items={[...service.faq]} />
+        <ServiceCTA
+          title={service.cta.title}
+          description={service.cta.description}
+        />
 
-        <section className="mt-10 border-t border-slate-200 pt-8">
-          <h2 className="text-lg font-semibold text-brand-navy">
+        <section
+          aria-labelledby="related-services-heading"
+          className="border-t border-slate-200 pt-10"
+        >
+          <h2
+            id="related-services-heading"
+            className="text-lg font-semibold text-brand-navy"
+          >
             Diğer Hizmetlerimiz
           </h2>
-          <ul className="mt-4 space-y-2">
-            {relatedPages.map((related) => (
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {relatedServices.map((related) => (
               <li key={related.slug}>
                 <Link
                   href={`/${related.slug}`}
-                  className="text-sm text-blue-600 hover:text-blue-800"
+                  className="block rounded-xl border border-navy-100 bg-navy-50/40 px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-emerald-200 hover:bg-emerald-50/40 hover:text-navy-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-400/40"
                 >
                   {related.title}
                 </Link>
